@@ -62,6 +62,8 @@ def create_user (request):
                 return render(request, "blank.html", {"page_title" : "User Already exists !"})
             user, created = User.objects.get_or_create(username = request.POST['email'], email = request.POST['email'], first_name = request.POST['first-name'], last_name = request.POST['last-name'], )
             if created:
+                user.set_password(request.POST['password'])
+                user.save()
                 group = Group.objects.get(name=request.POST['group'])
                 user.groups.add(group)
                 UserProfile.objects.create(user = user, phone_number = request.POST['phone'], skype_name = request.POST['skype'])
