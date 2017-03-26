@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <title> Alpha writing services </title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <link href="/static/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Alpha</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Home</a></li>
+        <li><a href="/logout/">Logout</a></li>
+        <!--<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>-->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="page-title col-md-offset-1 col-md-10">
+        <p>Create a new user</p>
+        <hr />
+    </div>
+
+    <div class="col-md-offset-4 col-md-4">
+      <form method="POST">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" class="form-control" id="first-name" required name="first-name">
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" class="form-control" id="last-name" required name="last-name">
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" class="form-control" id="email" required name="email">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="skype">Skype name</label>
+        <input type="text" class="form-control" id="skype" name="skype">
+      </div>
+      <div class="form-group">
+        <label for="group">User group</label>
+        <!--<input type="text" class="form-control" id="group" >-->
+        <select class="form-control" id="group" name="group" required>
+          {%for group in group_list%}
+            <option value="{{group.name}}">{{group.name}}</option>
+          {%endfor%}
+        </select>
+      </div>
+      <button class="btn btn-primary input-submit"> Submit </button>
+      </form>      
+    </div>
+</div>
+</body>
+
+</html>

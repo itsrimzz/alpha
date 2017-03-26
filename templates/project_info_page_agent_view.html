@@ -1,0 +1,168 @@
+<html>
+
+<head>
+  <title> Alpha writing services </title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <link href="/static/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="#">Alpha</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Logout</a></li>
+          <!--<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>-->
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <div class="container">
+    <div class="page-title col-md-offset-1 col-md-10">
+      <p>Project Information</p>
+      <hr />
+    </div>
+
+    <div class="col-md-offset-1 col-md-6">
+      <div class="form-group">
+        <label for="order-id">Order ID</label>
+        <input type="text" class="form-control" id="order-id" readonly value="{{order.id}}">
+      </div>
+      <div class="form-group">
+        <label for="project-title">Project Title</label>
+        <input type="text" class="form-control" id="project-title" readonly value="{{order.article.title}}">
+      </div>
+      <div class="form-group">
+        <label for="instructions">Instructions</label>
+        <textarea class="form-control" id="instructions" readonly>{{order.article.instructions}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="deadline">Deadline</label>
+        <input type="text" class="form-control" id="deadline" readonly value="{{order.deadline}}">
+      </div>
+      <div class="form-group">
+        <label for="project-status">Project Status</label>
+        <input type="text" class="form-control" id="project-status" readonly value="{{order.status}}">
+      </div>
+      <div class="form-group">
+        <label for="pages">No of pages</label>
+        <input type="text" class="form-control" id="pages" readonly value="{{order.article.pages}}">
+      </div>
+      <div class="form-group">
+        <label for="budget">Estimated Budget</label>
+        <input type="text" class="form-control" id="budget" readonly value="{{order.estimated_budget}}">
+      </div>
+      <div class="form-group">
+        <label for="user">Customer Email id</label>
+        <input type="text" class="form-control" id="user" readonly value="{{order.customer.email}}">
+        <a href="#">Go to profile</a>
+      </div>
+      <div class="form-group">
+        <label for="assignment-type">Assignment Type</label>
+        <input type="text" class="form-control" id="assignment-type" readonly value="{{order.article.assignment_type}}">
+      </div>
+      <div class="form-group">
+        <label for="discipline">Discipline</label>
+        <input type="text" class="form-control" id="discipline" readonly value="{{order.article.discipline}}">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="assignee">Assignee</label>
+        <input type="text" class="form-control" id="assignee" readonly value="{{order.assignee}}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="page-title col-md-offset-1 col-md-8">
+        <p>Notes</p>
+        <hr />
+      </div>
+      <div class="page-title col-md-2">
+        <button class="btn btn-primary input-submit" data-toggle="modal" data-target="#myModal"> Add a new Note </button>
+        <!--<hr />-->
+      </div>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add a new note</h4>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/new/note/">
+          {% csrf_token %}
+          <input type="hidden" value="{{order.id}}" name="order-id" />
+          <div class="form-group">
+            <label for="text">Note text</label>
+            <textarea name="text" id="text" class="form-control"></textarea>
+          </div>
+          
+          <input type="submit" class="btn btn-primary input-submit" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+    
+    {% for note in notes %}
+    <div class="note col-md-offset-2 col-md-8">
+      <p>Created by:</p>
+      <input type="text" value="{{note.user}}" readonly class="form-control"/>
+      <hr />
+      <p>Created At: </p>
+      <input type="text" value="{{note.made_on}}" readonly class="form-control"/>
+      <hr />
+      <p> Text:</p>
+      <textarea class="form-control" readonly>{{note.text}}</textarea>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

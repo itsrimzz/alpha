@@ -1,0 +1,37 @@
+.page-title {
+    margin-top: 3em;
+}
+
+.page-title p {
+    font-size: 2em;
+}
+
+.input-md {
+    height: 45px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    margin-top: 1em;
+    border: 1px solid #cad3df;
+}
+
+.input-submit {
+    margin-top: 1em;
+    justify-content: flex-end; 
+}
+
+tr{
+    cursor: pointer
+}
+
+.note {
+    border: 1px solid #eee;
+    margin-bottom: 2em;
+    padding: 2em;
+    background-color: #eee;
+}
+
+.note hr {
+    border: 1px solid gray;
+}
