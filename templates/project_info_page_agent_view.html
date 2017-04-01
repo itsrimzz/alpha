@@ -86,7 +86,11 @@
         <label for="pages">No of pages</label>
         <input type="text" class="form-control" id="pages" readonly value="{{order.article.pages}}">
       </div>
-      <div class="form-group">
+      <div class="form-group col-md-3" style="padding: 0">
+        <label for="currency">currency</label>
+        <input type="text" class="form-control" id="currency" readonly value="{{order.currency}}">
+      </div>
+      <div class="form-group col-md-9" style="padding-right: 0">
         <label for="budget">Estimated Budget</label>
         <input type="text" class="form-control" id="budget" readonly value="{{order.estimated_budget}}">
       </div>

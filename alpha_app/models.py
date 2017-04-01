@@ -27,10 +27,16 @@ class Order (models.Model):
         ('Completed', 'Completed'),
         ('Canceled','Canceled'),
     )
+    CURRENCY_CHOICES = (
+        ('USD', 'USD'),
+        ('EURO','EURO'),
+        ('POUND', 'POUND')
+    )
     customer = models.ForeignKey(User, related_name="customer")
     made_on  = models.DateTimeField(default = datetime.now)
     deadline = models.DateTimeField()
-    estimated_budget = models.IntegerField()
+    currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default=CURRENCY_CHOICES[0][0])
+    estimated_budget = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     article = models.ForeignKey(Article)
     assignee = models.ForeignKey(User, related_name="assignee", null=True, blank=True)

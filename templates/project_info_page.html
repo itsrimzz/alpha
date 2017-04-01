@@ -86,11 +86,20 @@
         </div>
         <div class="form-group">
           <label for="pages">No of pages</label>
-          <input type="text" class="form-control" id="pages" name="pages" required>
+          <input type="number" class="form-control" id="pages" name="pages" required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-3" style="padding: 0">
+          <label for="currency">Currency</label>
+          <select class="form-control" id="currency" name="currency" required>
+          <!--<input type="text" class="form-control" id="assignment-type" name="assignment-type">-->
+          {% for choice in currency_choices%}
+          <option value="{{choice.0}}">{{choice.1}}</option>
+          {%endfor%}
+          </select>
+        </div>
+        <div class="form-group col-md-9" style="padding-right: 0">
           <label for="budget">Estimated Budget</label>
-          <input type="text" class="form-control" id="budget" name="budget" required>
+          <input type="number" step="any" class="form-control" id="budget" name="budget" required>
         </div>
         <div class="form-group">
           <label for="user">Customer Email id</label>

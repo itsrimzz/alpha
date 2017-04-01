@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'alpha.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-	    'NAME': os.environ.get('DBNAME', 'split_pay'),
-        'USER': os.environ.get('DBUSER', 'root'),
-        'PASSWORD': os.environ.get('DBPASSWORD', 'root'),
-        'HOST': os.environ.get('DBHOST', 'localhost'),
-        'PORT': os.environ.get('DBPORT', ''),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'alpha',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'Hasher@123',
     }
 }
 
