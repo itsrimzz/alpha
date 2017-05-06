@@ -76,14 +76,15 @@ WSGI_APPLICATION = 'alpha.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-	    'NAME': os.environ.get('DBNAME', 'split_pay'),
-        'USER': os.environ.get('DBUSER', 'root'),
-        'PASSWORD': os.environ.get('DBPASSWORD', 'root'),
-        'HOST': os.environ.get('DBHOST', 'localhost'),
-        'PORT': os.environ.get('DBPORT', ''),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'alpha',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'Hasher@123',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -128,3 +129,10 @@ LOGIN_REDIRECT_URL = 'homepage'
 LOGOUT_REDIRECT_URL = 'homepage'
 LOGOUT_URL = '/logout/'
 LOGIN_URL = '/login/'
+
+
+#Roles constants
+AGENT = "agent"
+ADMIN = "admin"
+CEM = "cem"
+CUSTOMER = "customer"
